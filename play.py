@@ -1,9 +1,12 @@
 import subprocess
 import time
 import pyautogui
+import logging
 import time, pyautogui, cv2, numpy as np, aircv as ac
 
 from Quartz import CGWindowListCopyWindowInfo, kCGWindowListOptionOnScreenOnly, kCGNullWindowID
+
+logger = logging.getLogger(__name__)
 
 # 获取窗口信息
 def get_window_position(app_name):
@@ -71,10 +74,15 @@ def open_game():
     find_touch('assets/zj_icon.png', double=True)
 
 def enter_main():
-    pass
+    logger.info("Try enter main")
+    if wait_for('assets/gonggao.png', timeout=30):
+        logger.info("Enter main successfully")
+    else:
+        logger.error("Enter main failed")
 
 
 if '__main__' == __name__:
+    logging.basicConfig(level=logging.INFO)
     open_game()
     enter_main()
 
