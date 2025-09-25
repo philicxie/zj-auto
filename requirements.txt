@@ -1,0 +1,4 @@
+# 通用
+pyautogui>=0.9.54
+# macOS 专用（pyobjc 自带 Quartz 封装）
+pyobjc-framework-Quartz>=9.0  ; sys_platform == "darwin"
